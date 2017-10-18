@@ -1,27 +1,47 @@
-# AngularTemplate
+# Angular examples
+* app.modules.ts : Contains @NgModule. Everything(?) has to be registered here. Component, modules, services...
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.5.
+---
+## Basic
+### Angular TS file
+```
+import {Component} from '@angular/core'     // To use the decorator Component
 
-## Development server
+@Component({
+    selector: 'my-app',                     // becomes tag name
+    template: `<h1>Hello {{name}}</h1>`     // can be direct html or file path like `./hello.html`
+})
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+export class AppComponent {                 // 'export' is needed to let others to call this
+    name = 'Angular';                       // property named 'name' and assign value
+}
+```
 
-## Code scaffolding
+### Html file
+```
+<body>
+    <my-app>Loading AppComponent content here...</my-app>   // selector name created in TS
+</body>
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Create Angular project by CLI command
+https://angular.io/guide/quickstart
 
-## Build
+Key commands to start
+```
+npm install -g @angular/cli
+ng new my-app
+ng serve --open
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+```
 
-## Running unit tests
+### Using CLI to generates a set of Component
+```
+ng g component component/my-component
+```
+This command creates ts, html, and css files. Also, add this component into @NgModule
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+---
+## Samples
+* /src/app/components/samples/__sample01__ : Basic Data Binding, String interpolation, Style
+* /src/app/components/samples/__sample02__ : Object, Interface, *ngFor
