@@ -1,0 +1,14 @@
+<p>Style </p>
+<ul>
+  <li>[style.font-size]="'25px'": <span [style.font-size]="'25px'">style with font-size</span></li>
+  <li>[style.color]="isError ? 'red' : 'black'": <span [style.color]="isError ? 'red' : 'black'">Warning</span></li>
+  <li>ngStyle: <span [ngStyle]="ngSimpleStyle">ngStyle</span></li>
+</ul>
+
+<p>Style Classes</p>
+<ul>
+  <li>class="style_class_name": <span class="simpleStyle">simple class</span></li>
+  <li>[class.style_class_name]="boolean variable": <span [class.simpleStyle]="isSimpleStyle">Using Angular variable to make simpleStyle to work</span></li>
+  <li>[ngClass]="variable in JSON format": <span [ngClass]="ngSimpleClass">ngClass</span></li>
+</ul>
+<br />

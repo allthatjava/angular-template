@@ -1,0 +1,10 @@
+(click)="function()" : <button (click)="doClickEvent($event, 'Click Event')">Click Event</button>
+<br>
+<ul>
+    <li>Mouse Events : click, mouseover, mousedown, mouseup, dblclick, drag</li>
+    <li>Key Events : keyup, keydown, keypress</li>
+    <li>Other Events : focus, blur, cut, copy, paste</li>
+</ul>
+
+<h3>{{textToBeUpdated}}</h3>
+(keyup)+property binding: <input type="text" (keyup)="updateText($event)" placeholder="Type Something Here" />
