@@ -1,4 +1,5 @@
-(click)="function()" : <button (click)="doClickEvent($event, 'Click Event')">Click Event</button>
+* <strong>Event Listener</strong><br>
+* (click)="function()" : <button (click)="doClickEvent($event, 'Click Event')" class="btn btn-success">Click Event</button>
 <br>
 <ul>
     <li>Mouse Events : click, mouseover, mousedown, mouseup, dblclick, drag</li>
@@ -7,4 +8,26 @@
 </ul>
 
 <h3>{{textToBeUpdated}}</h3>
-(keyup)+property binding: <input type="text" (keyup)="updateText($event)" placeholder="Type Something Here" />
+* (keyup)+property binding: <input type="text" (keyup)="updateText($event)" placeholder="Type Something Here" />
+<br><br>
+
+* <strong>ngModel binding</strong><br>
+[(ngModel)]="property_name" type="text": 
+<input type="text" name="whatYouTyped" [(ngModel)]="whatYouTyped" placeholder="type something here"/>
+<span >{{whatYouTyped}}</span><br>
+
+[(ngModel)]="property_name" type="number": 
+<input type="number" name="typedNumber" [(ngModel)]="typedNumber" />
+<span >{{typedNumber}}</span>
+<br><br>
+
+* <strong>Sumbission</strong><br>
+<form (submit)="onSubmit()">
+    <label>name</label>
+    <input type="text" name="name" [(ngModel)]="userName" />
+
+    <input type="submit" class="btn btn-primary" value="Add Names" />
+    <ul>
+        <li *ngFor="let personName of userNames">{{personName}}</li>
+    </ul>
+</form>

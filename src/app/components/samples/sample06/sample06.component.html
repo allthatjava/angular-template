@@ -1,0 +1,23 @@
+Main features <strong>HTTP</strong> is in service02.service.ts<br><br>
+
+Http GET / DELETE (Edit only set updatable data to form):
+<ul>
+  <li *ngFor="let u of users"  >
+    Name: {{ u.name }}, Email:{{u.email}} 
+    <button (click)="onEdit(u)">Edit</button>
+    <button (click)="onDelete(u.id)" >Delete</button>
+  </li>
+</ul>
+
+Http POST / PUT:
+<form (submit)="onSubmit()">
+  <div>
+    <label>Name</label>
+    <input type="text" name="name" [(ngModel)]="user.name">
+  </div>
+  <div>
+      <label>Email</label>
+      <input type="text" name="email" [(ngModel)]="user.email">
+  </div>
+  <input type="submit" value="Add User" >
+</form>

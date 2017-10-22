@@ -4,8 +4,9 @@
 ---
 ## Basic
 ### Angular TS file
+* Component
 ```
-import {Component} from '@angular/core'     // To use the decorator Component
+import { Component } from '@angular/core'     // To use the decorator Component
 
 @Component({
     selector: 'my-app',                     // becomes tag name
@@ -14,12 +15,21 @@ import {Component} from '@angular/core'     // To use the decorator Component
     styles: [``]                              // same idea with template for style
     styleUrls: ['./hello.css']
 })
-
 export class AppComponent {                 // 'export' is needed to let others to call this
     name = 'Angular';                       // property named 'name' and assign value
 }
 ```
+* Service
+```
+Import { Injectable } from '@angular/core'
 
+@Injectable()
+export class MyService{
+    getSomething(): return_type {
+        return  some_value_in_return_type;
+    }
+}
+```
 ### Html file
 ```
 <body>
@@ -44,6 +54,11 @@ ng g component component/my-component
 ```
 This command creates ts, html, and css files. Also, add this component into @NgModule
 
+``` 
+ng g service service/my-service
+```
+And this is how to create Service but, this will NOT ad created service into @NgModule
+
 ---
 ## Samples
 #### Decorations
@@ -52,3 +67,4 @@ This command creates ts, html, and css files. Also, add this component into @NgM
 * /src/app/components/samples/__sample03__ : Style and Class
 
 #### Events
+

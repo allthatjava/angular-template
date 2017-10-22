@@ -8,6 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class Sample04Component implements OnInit {
 
   textToBeUpdated="";
+  
+  whatYouTyped:string = "";
+  typedNumber:number = 0;
+
+  // 
 
   constructor() { }
 
@@ -19,6 +24,15 @@ export class Sample04Component implements OnInit {
 
   updateText(e){
     this.textToBeUpdated = e.target.value;
+  }
+
+  // Sumission part
+  userName:string = '';
+  userNames:string[] = ['Brian', 'Gerrard', 'Eric'];
+
+  onSubmit(){
+    this.userNames.push(this.userName);
+    this.userName='';
   }
 
   ngOnInit() {
