@@ -11,14 +11,22 @@ import { Component } from '@angular/core'     // To use the decorator Component
 @Component({
     selector: 'my-app',                     // becomes tag name
     template: `<h1>Hello {{name}}</h1>`,    //-> can be a piece of html
-    templateUrl: `./hello.html`,            //->   or file path
-    styles: [``]                              // same idea with template for style
-    styleUrls: ['./hello.css']
+    templateUrl: `./hello.html`,            //   or file path
+    styles: [``]                            //-> can be a piece of css
+    styleUrls: ['./hello.css']              //   or file path
 })
 export class AppComponent {                 // 'export' is needed to let others to call this
     name = 'Angular';                       // property named 'name' and assign value
 }
 ```
+
+* HTML for Component
+```
+<body>
+    <my-app>Loading AppComponent content here...</my-app>   // selector name created in TS
+</body>
+```
+
 * Service
 ```
 Import { Injectable } from '@angular/core'
@@ -30,11 +38,34 @@ export class MyService{
     }
 }
 ```
-### Html file
+* Router
 ```
-<body>
-    <my-app>Loading AppComponent content here...</my-app>   // selector name created in TS
-</body>
+// In the app.module.ts
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes: Routes = [
+    { path: '', component: HomeComponent},
+    { path: 'about', component: AboutComponent},
+    { path: '**', component: PageNotFoundComponent}
+];
+
+imports: [ 
+    ...,
+    RouterModule.forRoot(appRoutes)
+];
+
+// This should be within <head></head> of index.html
+<base href="/">
+
+// In app.component - This is where Routes components lands
+<router-outlet></router-outlet>
+```
+
+* HTML for Router
+```
+// Html with links (matches with Routes in app.module.ts)
+<a href="#" routerLink="/">Home</a>
+<a href="#" routerLink="/about">About</a>
 ```
 
 ### Create Angular project by CLI command
