@@ -4,8 +4,8 @@
 ---
 ## Basic
 ### Angular TS file
-* Component
-```
+* Component - A special directive that allows component-based structure
+```Typescript
 import { Component } from '@angular/core'     // To use the decorator Component
 
 @Component({
@@ -21,15 +21,15 @@ export class AppComponent {                 // 'export' is needed to let others 
 ```
 
 * HTML for Component
-```
+```html
 <body>
     <my-app>Loading AppComponent content here...</my-app>   // selector name created in TS
 </body>
 ```
 
-* Service
-```
-Import { Injectable } from '@angular/core'
+* Service - DI(Dependency Injection) ready object that can shared cross the application
+```Typescript
+import { Injectable } from '@angular/core'
 
 @Injectable()
 export class MyService{
@@ -38,31 +38,34 @@ export class MyService{
     }
 }
 ```
-* Router
-```
+
+* Router - Navigate through components to display
+```Typescript
 // In the app.module.ts
 import { RouterModule, Routes } from '@angular/router';
 
+// Routes need to be registered here
 const appRoutes: Routes = [
     { path: '', component: HomeComponent},
     { path: 'about', component: AboutComponent},
     { path: '**', component: PageNotFoundComponent}
 ];
 
+@NgModule({
 imports: [ 
-    ...,
-    RouterModule.forRoot(appRoutes)
-];
-
-// This should be within <head></head> of index.html
-<base href="/">
-
-// In app.component - This is where Routes components lands
-<router-outlet></router-outlet>
+    RouterModule.forRoot(appRoutes) // To use Router Module
+    ]
+});
 ```
 
 * HTML for Router
-```
+```html
+// This should be within <head></head> of index.html
+<base href="/">
+
+// In the app.component - This is where the Router displays a view 
+<router-outlet></router-outlet>
+
 // Html with links (matches with Routes in app.module.ts)
 <a href="#" routerLink="/">Home</a>
 <a href="#" routerLink="/about">About</a>
@@ -73,10 +76,9 @@ https://angular.io/guide/quickstart
 
 Key commands to start
 ```
-npm install -g @angular/cli
-ng new my-app
-ng serve --open
-
+npm install -g @angular/cli             <-- Install Angular CLI
+ng new my-app                           <-- Create a new Angular Project
+ng serve --open                         <-- Starting npm server
 ```
 
 ### Using CLI to generates a set of Component
@@ -91,11 +93,46 @@ ng g service service/my-service
 And this is how to create Service but, this will NOT ad created service into @NgModule
 
 ---
+## Angular Cheat sheet
+{{variable name}} : Display values - e.g. {{userName}}, {{user.name}}
+
+*ngFor(let object of objects)
+*ngIf( boolean expression)
+
+[style.style-name]="value"
+[ngStyle]="variable name with style in JSON format"
+[class.style_class_name]="boolean variable to enable this class or not"
+[ngClass]="variable name with style class in JSON format"
+
+(event)="function() in component" : e.g. (click, keyup ...)="onClick($event)"
+
+[(ngModel)]="variable name" type="number" : type is optional
+[(ngModel)]="object.attribute" type="number" : type is optional e.g. [(ngModel)]="user.name"
+
+&lt;form ... (submit)="fuction() in Component"&gt;
+
+&lt;router-outlet&gt;&lt;router-outlet&gt;
+&lt;a href="#" routerLink="router path name"&gt;Link&lt;/a&gt;
+
+@Input : e.g. @Input('name') variableName:Type;
+@Output : e.g. @Output customEventName = new EventEmitter<Interface_Type>();
+
+(  ) : Customer event can be created and used with round bracket e.g. (event_name)
+[ ] : Accessing attritube in Component from HTML
+
+---
 ## Samples
 #### Decorations
-* /src/app/components/samples/__sample01__ : Basic Data Binding, String interpolation, Style
-* /src/app/components/samples/__sample02__ : Object, Interface, *ngFor
-* /src/app/components/samples/__sample03__ : Style and Class
+* /src/app/components/samples/**sample01** : Basic Data Binding, String interpolation, Style
+* /src/app/components/samples/**sample02** : Object, Interface, *ngFor
+* /src/app/components/samples/**sample03** : Style and Class
 
 #### Events
+* /src/app/components/samples/**sample04** : Events, 2 way binding, form submission
 
+#### Services
+* /src/app/components/samples/**sample05** : Basic Service (with service01)
+* /src/app/components/samples/**sample06** : Http module service with GET, POST, DELETE ... (with service02)
+
+#### Routers
+* /src/app/router/* : Router samples
