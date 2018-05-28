@@ -19,10 +19,10 @@ export class Sample06Component {
     });
   }
 
-  onSubmit(isEdit){
-    console.log("this.user--->"+this.user.name);
+  onSubmit(){
+    console.log("this.user--->"+this.user.name+", isEdited:"+this.isEdited);
 
-    if(isEdit){
+    if(this.isEdited){
       this.service02.updateUser(this.user).subscribe(user=>{
         for(let i =0; i < this.users.length; i++){
           if( this.users[i].id == this.user.id)
@@ -30,7 +30,16 @@ export class Sample06Component {
         }
 
         this.users.unshift(this.user);
-      });
+        this.isEdited = false;
+      },
+      // error
+      () => {}        // or error => {}
+      ,
+      () => {
+        // Clear the input fields
+        this.user = { id:'', name:'', email:''};
+      }
+    );
     }else{
       this.service02.addUser(this.user).subscribe(user=>{
         console.log(user);

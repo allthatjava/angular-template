@@ -74,12 +74,22 @@ imports: [
 ### Create Angular project by CLI command
 https://angular.io/guide/quickstart
 
-Key commands to start
+Key commands to start and run the application
 ```
 npm install -g @angular/cli             <-- Install Angular CLI
 ng new my-app                           <-- Create a new Angular Project
 ng serve --open                         <-- Starting npm server
 ```
+
+To run the test code after clone this project
+```
+npm install 							<-- Install npm to the project
+ng build 								<-- Compile the code
+ng serve --open 						<-- node.js server will start to run the application
+```
+
+__May need uninstall and install @angular/cli and also,'ng update @angular/cli', if you have older version of Angular__ 
+This will delete old version files such as '.angular-cli.json' and create 'angular.json' file.
 
 ### Using CLI to generates a set of Component
 ```
