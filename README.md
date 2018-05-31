@@ -90,6 +90,8 @@ ng serve --open 						<-- node.js server will start to run the application
 
 __May need uninstall and install @angular/cli and also,'ng update @angular/cli', if you have older version of Angular__ 
 This will delete old version files such as '.angular-cli.json' and create 'angular.json' file.
+Also, check https://update.angular.io/ for the update from previous version.
+
 
 ### Using CLI to generates a set of Component
 ```
